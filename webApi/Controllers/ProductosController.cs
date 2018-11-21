@@ -61,6 +61,19 @@ namespace webApi.Controllers
             return Ok(result);
         }
 
+        [HttpGet("{codProducto}")]
+        public IActionResult Get(int codProducto)
+        {
+            var producto = this.dbProducto.GetByCodProducto(codProducto);
+
+            if (producto == null)
+            {
+                return BadRequest($"El producto {codProducto} no se encuentra registrado.");
+            }
+
+            return Ok(producto);
+        }
+
 
     }
 }

@@ -69,6 +69,14 @@ namespace webApi
                 app.UseHsts();
             }
 
+            app.UseCors(options => {
+                options
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials();
+            });
+
             app.UseHttpsRedirection();
             app.UseMvc();
         }
